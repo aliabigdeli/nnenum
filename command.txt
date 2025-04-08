@@ -1,0 +1,86 @@
+python -m nnenum.nnenum -o "$ONNX_FILE" -v "$VNNLIB_FILE" -t "$TIMEOUT" -f "$RESULTS_FILE" -s "$CATEGORY"
+
+
+python -m nnenum.nnenum -o benchmarks/acasxu/onnx/ACASXU_run2a_1_1_batch_2000.onnx -v benchmarks/acasxu/vnnlib/prop_1.vnnlib -f out.txt -s acasxu
+
+
+python -m nnenum.nnenum -o benchmarks/LinearizeNN_benchmark2024/onnx/AllInOne.onnx -v benchmarks/LinearizeNN_benchmark2024/vnnlib/prop_10_10_io.vnnlib -f out.txt -s LinearizeNN_benchmark2024
+
+linearizenn:
+python -m nnenum.nnenum -o benchmarks/linearizenn/onnx/AllInOne_120_120.onnx -v benchmarks/linearizenn/vnnlib/prop_120_120_4.vnnlib -s linearizenn -t 10
+
+
+
+python3 -m nnenum.nnenum -o examples/cifar2020/cifar10_2_255_simplified.onnx -v examples/cifar2020/cifar10_spec_idx_3_eps_0.00784_n1.vnnlib
+
+traffic_signs_recognition:
+python -m nnenum.nnenum -o benchmarks/traffic_signs_recognition/onnx/3_30_30_QConv_16_3_QConv_32_2_Dense_43_ep_30.onnx -v benchmarks/traffic_signs_recognition/vnnlib/model_30_idx_3982_eps_1.00000.vnnlib -t 480.0
+python -m nnenum.nnenum -o benchmarks/traffic_signs_recognition/onnx/3_48_48_QConv_32_5_MP_2_BN_QConv_64_5_MP_2_BN_QConv_64_3_BN_Dense_256_BN_Dense_43_ep_30.onnx -v benchmarks/traffic_signs_recognition/vnnlib/model_48_idx_3982_eps_1.00000.vnnlib -t 480.0
+
+cifar_biasfield:
+python -m nnenum.nnenum -o benchmarks/cifar_biasfield/onnx/cifar_bias_field_0.onnx -v benchmarks/cifar_biasfield/vnnlib/prop_0.vnnlib
+
+safeNLP:
+python -m nnenum.nnenum -o benchvote/safeNLP/onnx/ruarobot/perturbations_0.onnx -v benchvote/safeNLP/vnnlib/ruarobot/hyperrectangle_4309.vnnlib -t 20
+python -m nnenum.nnenum -o benchvote/safeNLP/onnx/ruarobot/perturbations_0.onnx -v benchvote/safeNLP/vnnlib/ruarobot/hyperrectangle_7651.vnnlib -t 20
+python -m nnenum.nnenum -o benchvote/safeNLP/onnx/medical/perturbations_0.onnx -v benchvote/safeNLP/vnnlib/medical/hyperrectangle_49.vnnlib -t 20
+
+python -m nnenum.nnenum -o benchmarks/safenlp/onnx/ruarobot/perturbations_0.onnx -v benchmarks/safenlp/vnnlib/ruarobot/hyperrectangle_7502.vnnlib -s safenlp
+
+cora:
+python -m nnenum.nnenum -o benchmarks/cora/onnx/cifar10-set.onnx -v benchmarks/cora/vnnlib/cifar10-img198.vnnlib -s cora
+
+python -m nnenum.nnenum -o benchmarks/cora/onnx/mnist-point.onnx -v benchmarks/cora/vnnlib/mnist-img0.vnnlib -s cora
+python -m nnenum.nnenum -o benchmarks/cora/onnx/mnist-trades.onnx -v benchmarks/cora/vnnlib/mnist-img0.vnnlib -s cora
+
+python -m nnenum.nnenum -o benchmarks/cora/onnx/mnist-set.onnx -v benchmarks/cora/vnnlib/mnist-img0.vnnlib -s cora
+python -m nnenum.nnenum -o benchmarks/cora/onnx/mnist-set.onnx -v benchmarks/cora/vnnlib/mnist-img1.vnnlib -s cora
+python -m nnenum.nnenum -o benchmarks/cora/onnx/mnist-set.onnx -v benchmarks/cora/vnnlib/mnist-img2.vnnlib -s cora
+
+python -m nnenum.nnenum -o benchmarks/cora/onnx/mnist-set.onnx -v benchmarks/cora/vnnlib/mnist-img7.vnnlib -s cora
+4.0 sec | 3.8 sec
+python -m nnenum.nnenum -o benchmarks/cora/onnx/mnist-set.onnx -v benchmarks/cora/vnnlib/mnist-img14.vnnlib -s cora
+4.32 min | 2.47 min
+python -m nnenum.nnenum -o benchmarks/cora/onnx/mnist-set.onnx -v benchmarks/cora/vnnlib/mnist-img18.vnnlib -s cora
+3.6 sec | 3.6 sec
+python -m nnenum.nnenum -o benchmarks/cora/onnx/mnist-set.onnx -v benchmarks/cora/vnnlib/mnist-img20.vnnlib -s cora
+4.6 sec | 4.4 sec
+python -m nnenum.nnenum -o benchmarks/cora/onnx/svhn-set.onnx -v benchmarks/cora/vnnlib/svhn-img183.vnnlib -s cora
+
+python -m nnenum.nnenum -o benchvote/cora-vnncomp2024-benchmark/nns/mnist-point.onnx -v benchvote/cora-vnncomp2024-benchmark/benchmark-files/mnist-img0.vnnlib -t 30
+python -m nnenum.nnenum -o benchvote/cora-vnncomp2024-benchmark/nns/mnist-trades.onnx -v benchvote/cora-vnncomp2024-benchmark/benchmark-files/mnist-img0.vnnlib -t 30
+python -m nnenum.nnenum -o benchvote/cora-vnncomp2024-benchmark/nns/mnist-set.onnx -v benchvote/cora-vnncomp2024-benchmark/benchmark-files/mnist-img0.vnnlib -t 30
+python -m nnenum.nnenum -o benchvote/cora-vnncomp2024-benchmark/nns/svhn-set.onnx -v benchvote/cora-vnncomp2024-benchmark/benchmark-files/svhn-img755.vnnlib -t 30
+python -m nnenum.nnenum -o benchvote/cora-vnncomp2024-benchmark/nns/svhn-point.onnx -v benchvote/cora-vnncomp2024-benchmark/benchmark-files/svhn-img792.vnnlib -t 30
+python -m nnenum.nnenum -o benchvote/cora-vnncomp2024-benchmark/nns/cifar10-point.onnx -v benchvote/cora-vnncomp2024-benchmark/benchmark-files/cifar10-img10.vnnlib -t 30
+python -m nnenum.nnenum -o benchvote/cora-vnncomp2024-benchmark/nns/svhn-point.onnx -v benchvote/cora-vnncomp2024-benchmark/benchmark-files/svhn-img140.vnnlib -t 30
+
+
+-------------
+wget -O filename.txt http://example.com
+https://apps.gurobi.com/keyserver?id=LICENSE_KEY&hostname=HOSTNAME&hostid=HOSTID&username=ubuntu&os=linux&sockets=SOCKETS&cores=CORES&localdate=YYYY-MM-DD&version=9
+
+
+https://apps.gurobi.com/keyserver?id=7cfa9bdc-b1aa-4377-a310-7703c2f813a5&hostname=ip-172-31-28-228&hostid=18316f2d&username=ubuntu&os=linux&sockets=2&cores=32&localdate=2024-07-10&version=11
+
+# DO NOT EDIT THIS FILE except as noted
+#
+# License ID 2534196
+#
+# Place this file in your home directory that takes precedence
+# or in one of the following shared locations:
+#    * C:\gurobi\ on Windows
+#    * /opt/gurobi/ on Linux
+#    * /Library/gurobi/ on Mac OS X
+# Or set the environment variable GRB_LICENSE_FILE to point to this file,
+# it will override the default locations
+#
+TYPE=ACADEMIC
+VERSION=11
+HOSTNAME=ip-172-31-28-228
+HOSTID=18316f2d
+SOCKETS=2
+USERNAME=ubuntu
+EXPIRATION=2025-07-10
+KEY=LKW804FC
+CKEY=LKW804FC
