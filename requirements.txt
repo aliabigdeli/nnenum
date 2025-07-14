@@ -1,8 +1,8 @@
 numpy==1.21
-scipy==1.9.0
-threadpoolctl>=3.0.0
-onnx==1.12.0
-onnxruntime==1.12.0
+scipy==1.7
+threadpoolctl==2.1.0
+onnx==1.9.0
+onnxruntime==1.8.0
 skl2onnx==1.7.0
 swiglpk
 termcolor
@@ -10,5 +10,5 @@ termcolor
 lark~=1.0
 psutil~=5.6
 scikit-image<0.19,>=0.18
-tensorflow>=2.8,<2.12
-protobuf>=3.19,<3.20
+tensorflow>=2.2,<2.8
+protobuf==3.19
