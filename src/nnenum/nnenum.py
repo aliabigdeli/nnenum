@@ -342,7 +342,6 @@ def main():
         set_image_settings()
     elif settings_str == "relusplitter":
         set_image_settings()
-        Settings.LP_SOLVER = "Gurobi"
     else:
         if num_inputs < 700:
             set_control_settings()
