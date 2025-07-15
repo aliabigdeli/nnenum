@@ -79,6 +79,10 @@ export PATH=${PATH}:$DIR/miniconda/bin
 # create conda environment
 # ${HOME}/miniconda/bin/conda env create -f ${DIR}/environment.yml
 
+# 1. Make Conda auto-accept the ToS
+export CONDA_PLUGINS_AUTO_ACCEPT_TOS=true
+
+# 2. Ensure the plugin that understands the env-var is present
 ${HOME}/miniconda/bin/conda install --name base conda-anaconda-tos
 # main repository
 ${HOME}/miniconda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
