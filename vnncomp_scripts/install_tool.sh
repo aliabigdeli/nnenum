@@ -79,6 +79,12 @@ export PATH=${PATH}:$DIR/miniconda/bin
 # create conda environment
 # ${HOME}/miniconda/bin/conda env create -f ${DIR}/environment.yml
 
+${HOME}/miniconda/bin/conda install --name base conda-anaconda-tos
+# main repository
+${HOME}/miniconda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+# R repository
+${HOME}/miniconda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+
 # ${HOME}/anaconda3/bin/conda create --yes --name nnenumenv python=3.8
 ${HOME}/miniconda/bin/conda create --yes --name nnenumenv python=3.8
 # ${HOME}/miniconda/bin/conda activate nnenumenv
