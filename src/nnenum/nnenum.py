@@ -78,6 +78,7 @@ def run_io_verify(vnnlib_filename, onnx_filename, timeout=None, outfile=None):
     result_str = 'none' # gets overridden
     cinput = None # counterexample input
     coutput = None # counterexample output
+    retrun_ce_based_on_inputs = True
     try:
         start_time = time.time()
         for idx, star in enumerate(star_list):
@@ -112,6 +113,12 @@ def run_io_verify(vnnlib_filename, onnx_filename, timeout=None, outfile=None):
             else:
                 cinput = maxpoints[np.argmax(maxlist)]
                 coutput = max_total
+            if retrun_ce_based_on_inputs:
+                y_temp_list = [0, 0]
+                y_temp_list[0] = coutput.item() - normalize_models_slope[0] * cinput[2] - normalize_models_slope[1] * cinput[3]
+                y_temp_list[1] = - coutput.item() + normalize_models_slope[0] * cinput[2] + normalize_models_slope[1] * cinput[3]
+                coutput = np.array(y_temp_list)
+            
 
     except Exception as e:
         # Code to execute if any other type of error occurs
