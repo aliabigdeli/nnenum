@@ -24,6 +24,7 @@ from nnenum.vnnlib import get_num_inputs_outputs, read_vnnlib_simple, read_io_vn
 import nnenum.setting_cat as setting_cat
 import time
 import re
+import onnxruntime as ort
 
 def make_spec(vnnlib_filename, onnx_filename):
     '''make Specification
@@ -114,10 +115,35 @@ def run_io_verify(vnnlib_filename, onnx_filename, timeout=None, outfile=None):
                 cinput = maxpoints[np.argmax(maxlist)]
                 coutput = max_total
             if retrun_ce_based_on_inputs:
-                y_temp_list = [0, 0]
-                y_temp_list[0] = coutput.item() - normalize_models_slope[0] * cinput[2] - normalize_models_slope[1] * cinput[3]
-                y_temp_list[1] = - coutput.item() + normalize_models_slope[0] * cinput[2] + normalize_models_slope[1] * cinput[3]
-                coutput = np.array(y_temp_list)
+                ### manual calulation:
+                # y_temp_list = [0, 0]
+                # y_temp_list[0] = coutput.item() - normalize_models_slope[0] * cinput[2] - normalize_models_slope[1] * cinput[3]
+                # y_temp_list[1] = - coutput.item() + normalize_models_slope[0] * cinput[2] + normalize_models_slope[1] * cinput[3]
+                # coutput = np.array(y_temp_list)
+                
+                ### using onnx model:
+                match = re.search(r'prop_(\d+)_(\d+)', vnnlib_filename)
+                if match:
+                    num1 = int(match.group(1))
+                    num2 = int(match.group(2))
+                onnx_run_name = onnx_filename.replace(".onnx", f"_{num1}_{num2}.onnx")
+                
+                # Load the ONNX model and run inference
+                try:
+                    sess = ort.InferenceSession(onnx_run_name)
+                    input_names = [inp.name for inp in sess.get_inputs()]
+                    
+                    # Prepare input - ensure it's the right shape and type
+                    cinput_array = np.array(cinput, dtype=np.float32).reshape(1, -1)
+                    inputs = {input_names[0]: cinput_array}
+                    
+                    # Run inference
+                    outputs = sess.run(None, inputs)
+                    coutput = outputs[0].flatten()  # Get the output and flatten to 1D
+                    
+                except Exception as e:
+                    print(f"Error running ONNX inference on {onnx_run_name}: {e}")
+                    # Fall back to the original coutput if ONNX inference fails
             
 
     except Exception as e:
