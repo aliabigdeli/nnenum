@@ -91,7 +91,7 @@ ${HOME}/miniconda/bin/conda tos accept --override-channels --channel https://rep
 
 # ${HOME}/anaconda3/bin/conda create --yes --name nnenumenv python=3.8
 ${HOME}/miniconda/bin/conda create --yes --name nnenumenv python=3.8
-${HOME}/miniconda/bin/conda activate nnenumenv
+# ${HOME}/miniconda/bin/conda activate nnenumenv
 
 # ${HOME}/anaconda3/envs/nnenumenv/bin/pip install -r "$DIR/requirements.txt"
 ${HOME}/miniconda/envs/nnenumenv/bin/pip install -r "$DIR/requirements.txt"

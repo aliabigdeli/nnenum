@@ -319,10 +319,10 @@ def main():
             set_control_settings()
         else:
             set_image_settings()
-    elif settings_str == "cora":
+    elif "cora" in settings_str:
         set_image_settings()
         Settings.LP_SOLVER = "Gurobi"
-    elif settings_str == "safenlp":
+    elif "safenlp" in settings_str:
         set_image_settings()
     elif settings_str in ["cifar2020", "cifar"]:
         set_image_settings()
@@ -337,7 +337,7 @@ def main():
                                 ['zono.area', 'zono.ybloat', 'zono.interval', 'deeppoly.area', 'star.lp']] 
         Settings.QUICK_OVERAPPROX_TYPES = [['deeppoly.area'], ['zono.area'],
                                       ['zono.area', 'zono.ybloat', 'zono.interval', 'deeppoly.area']]
-    elif settings_str in ["nn4sys", "2022_nn4sys", "2023_nn4sys", "nn4sys_2022", "nn4sys_2023"]:
+    elif "nn4sys" in settings_str:
         set_control_settings()
         Settings.LP_SOLVER = "Gurobi"
         # Settings.OVERAPPROX_TYPES = [['deeppoly.area'], ['zono.area'], 
@@ -345,36 +345,36 @@ def main():
         #                         ['zono.area', 'zono.ybloat', 'zono.interval', 'deeppoly.area', 'star.lp']] 
         # Settings.QUICK_OVERAPPROX_TYPES = [['deeppoly.area'], ['zono.area'],
         #                               ['zono.area', 'zono.ybloat', 'zono.interval', 'deeppoly.area']]
-    elif settings_str == "oval21":
+    elif "oval21" in settings_str:
         set_image_settings()
-    elif settings_str == "reach_prob_density":
+    elif "reach_prob_density" in settings_str:
         set_control_settings()
-    elif settings_str == "rl_benchmarks":
+    elif "rl_benchmarks" in settings_str:
         set_control_settings()
-    elif settings_str == "tllverifybench":
+    elif "tllverifybench" in settings_str:
         set_control_settings()
         Settings.LP_SOLVER = "Gurobi"
-    elif settings_str in ["vggnet16", "vggnet16_2022", "vggnet16_2023"]:
+    elif "vggnet16" in settings_str:
         set_image_settings()
-    elif settings_str == "acasxu":
+    elif "acasxu" in settings_str:
         set_control_settings()
-    elif settings_str == "collins_rul_cnn":
+    elif "collins_rul_cnn" in settings_str:
         set_image_settings()
-    elif settings_str == "cgan":
+    elif "cgan" in settings_str:
         set_image_settings()
-    elif settings_str == "metaroom":
+    elif "metaroom" in settings_str:
         set_image_settings()
         # Settings.LP_SOLVER = "Gurobi"
+    elif "soundnessbench" in settings_str:
+        set_image_settings()
+    elif "relusplitter" in settings_str:
+        set_image_settings()
     elif settings_str == "control":
         set_control_settings()
     elif settings_str == "image":
         set_image_settings()
     elif settings_str == "exact":
         set_exact_settings()
-    elif settings_str == "soundnessbench":
-        set_image_settings()
-    elif settings_str == "relusplitter":
-        set_image_settings()
     else:
         if num_inputs < 700:
             set_control_settings()
